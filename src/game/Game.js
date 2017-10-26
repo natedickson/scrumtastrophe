@@ -10,24 +10,18 @@ const propTypes = {
 
 @observer
 class Game extends Component {
-    componentWillMount() {
-        this.props.store.getUsers();
+    componentDidMount() {
+        this.props.store.getGames();
     }
     render() {
         return (
-            <Provider {...this.props}>
-                <div>
-                    <StartPage/>
-                </div>
-            </Provider>
+            <div>
+                <StartPage/>
+            </div>
         );
     }
 }
 
-Game.propTypes = {
-    onClick: PropTypes.func,
-    selected: PropTypes.bool,
-    label: PropTypes.string,
-};
+Game.propTypes = propTypes;
 
 export default Game

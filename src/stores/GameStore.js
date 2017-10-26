@@ -1,4 +1,5 @@
-import mobx, {observable, } from 'mobx';
+import mobx, {observable, useStrict, computed, action} from 'mobx';
+
 import axios from 'axios';
 
 useStrict(true); //strict mode: observable state only modifiable by actions
