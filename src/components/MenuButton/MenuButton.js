@@ -6,10 +6,10 @@ const propTypes = {
     label: PropTypes.string,
 };
 
-const MenuButton = ({ onClick, label }) => {
+const MenuButton = ({onClick, label}) => {
     return (
-        <button className="menu-button" onClick={ onClick }>
-            { label }
+        <button className="menu-button" onClick={() => onClick()}>
+            {label}
         </button>
     );
 };

@@ -1,4 +1,4 @@
-import mobx, {observable, useStrict, computed, action} from 'mobx';
+import {observable, useStrict, computed, action} from 'mobx';
 
 import axios from 'axios';
 

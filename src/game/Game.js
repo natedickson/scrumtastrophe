@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
-import 'Game.css';
+import './Game.css';
 import StartPage from "../pages/StartPage/StartPage";
 
 const propTypes = {
@@ -16,7 +16,7 @@ class Game extends Component {
     render() {
         return (
             <div>
-                <StartPage/>
+                <StartPage store={this.props.store}/>
             </div>
         );
     }

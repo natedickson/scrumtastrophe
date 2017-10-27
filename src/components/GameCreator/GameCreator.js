@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import NameInput from "../NameInput/NameInput";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// const propTypes = {
-//     games: PropTypes.object.isRequired,
-//     onItemClick: PropTypes.func.isRequired
-// };
+const propTypes = {
+    onNameChange: PropTypes.func.isRequired
+};
 
 class GameCreator extends Component {
 
@@ -13,7 +12,7 @@ class GameCreator extends Component {
         return (
             <div className="game-creator-container">
                 <div>Name Your Game</div>
-                <NameInput onSubmit={} inputLabel="Name"/>
+                <NameInput onChange={this.props.onNameChange} inputLabel="Name"/>
             </div>
         );
     }
