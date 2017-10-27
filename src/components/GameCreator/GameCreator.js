@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NameInput from "../NameInput/NameInput";
 import PropTypes from 'prop-types';
+import './GameCreator.css';
 
 const propTypes = {
     onNameChange: PropTypes.func.isRequired

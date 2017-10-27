@@ -1,0 +1,7 @@
+.loader-spinner{
+    width:40px;
+    height:40px;
+    border:4px solid #fcd779; /*Default circle color*/
+    border-top:4px solid white; /*Highlighted color*/
+    border-radius:50%;
+}

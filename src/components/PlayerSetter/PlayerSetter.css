@@ -1,0 +1,9 @@
+.game-creator-conatiner {
+    background-color: darkgray;
+    color: black;
+    display: block;
+    position: absolute;
+    top: 20%;
+    width: 20em;
+    height: 20em;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './MenuButton.css';
 
 const propTypes = {
     onClick: PropTypes.func,

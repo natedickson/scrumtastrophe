@@ -1,0 +1,9 @@
+.game-creator-container {
+    background-color: darkgray;
+    color: black;
+    display: block;
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    height: 10em;
+}

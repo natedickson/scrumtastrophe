@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './GameTitle.css';
 
 export default class GameTitle extends Component {
     render() {
