@@ -4,7 +4,6 @@ import { observer } from 'mobx-react';
 // import GameTitle from '../../components/GameTitle/GameTitle';
 import MenuButton from '../../components/MenuButton/MenuButton';
 import GameSelector from '../../components/GameSelector/GameSelector';
-import GameCreator from '../../components/GameCreator/GameCreator';
 import './StartPage.css';
 import PopUp from "../../components/PopUp/PopUp";
 import PlayerSetter from "../../components/PlayerSetter/PlayerSetter";
@@ -19,7 +18,6 @@ class StartPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            creatingGame: false,
             selectingGame: false
         }
     }
@@ -27,21 +25,12 @@ class StartPage extends Component {
     render() {
         return (
             <div className="start-page-container">
-                {this.createGameModal()}
                 {this.selectGameModal()}
                 {this.setPlayerModal()}
                 <MenuButton onClick={this.createGame} label="Create Game"/>
                 <MenuButton onClick={this.selectGame} label="Join Game"/>
             </div>
         );
-    }
-
-    createGameModal = () => {
-        return this.state.creatingGame ? (
-            <PopUp popupTitle="Create Game" popupContent={() => {
-                return (<GameCreator onSubmit={this.createGameSubmit}/>)
-            }} onExit={this.createGame} okayButton={false}/>
-        ) : null;
     }
 
     selectGameModal = () => {
@@ -53,7 +42,7 @@ class StartPage extends Component {
     setPlayerModal = () => {
         return this.props.store.currentPlayer.name === '' ? (
             <PopUp popupTitle="Welcome" popupContent={() => {
-                return (<PlayerSetter onSubmit={this.props.store.setPlayer}/>)
+                return (<PlayerSetter onSubmit={this.props.store.getPlayer}/>)
             }} onExit={this.blankFunc} okayButton={false}/>
         ) : null;
     }
@@ -66,10 +55,7 @@ class StartPage extends Component {
     }
 
     createGame = () => {
-        const state = this.state;
-        const currentState = state.creatingGame;
-        state.creatingGame = !currentState;
-        this.setState(state);
+        this.props.store.createGame();
     }
 
     blankFunc = () => {

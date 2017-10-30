@@ -13,9 +13,28 @@ class GameStore {
 
     @computed get playerId() { return this.currentPlayer.id; }
 
-    @action setPlayer = (player) => { this.currentPlayer.name = player; };
+    @action setPlayer = (player) => { this.currentPlayer = player; };
+    @action getPlayer = (playerName) => {
+        loader.show();
+        axios.post(this.serverUrl + 'player/create',playerName).then( (response) => {
+            this.setPlayer(response.data);
+            loader.hide();
+        }, () => {
+            loader.hide();
+        });
+    };
     @action joinGame = (game) => { this.currentGame = game; };
-    @action setGames = (games) => { this.games = games; }
+    @action createGame = () => {
+        loader.show();
+        axios.post(this.serverUrl + 'games/create', this.currentPlayer.id, {headers: {'Content-type' : 'application/json'}}).then( (response) => {
+            this.joinGame(response.data);
+            loader.hide();
+        }, (error) => {
+            console.log(error);
+            loader.hide();
+        });
+    }
+    @action setGames = (games) => { this.games = games; };
     @action getGames() {
         loader.show();
         axios.get(this.serverUrl + 'games').then( response => {
@@ -24,7 +43,7 @@ class GameStore {
         }, () => {
             loader.hide();
         });
-    }
+    };
 }
 
 const store = new GameStore();

@@ -18,10 +18,8 @@ class PlayerSetter extends Component {
         return (
             <div className="player-setter-container">
                 <div>Name Yourself</div>
-                <form onSubmit={this.submitNameChange}>
-                    <input onChange={(e) => this.setState({playerName: e.target.value})}/>
-                    <input type="submit"></input>
-                </form>
+                <input onChange={(e) => this.setState({playerName: e.target.value})}/>
+                <button onClick={this.submitNameChange}>Enter</button>
             </div>
         );
     }

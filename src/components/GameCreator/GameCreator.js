@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import NameInput from "../NameInput/NameInput";
 import PropTypes from 'prop-types';
 import './GameCreator.css';
 
 const propTypes = {
-    onNameChange: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
 };
 
 class GameCreator extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            gameName: ''
+        }
+    }
     render() {
         return (
             <div className="game-creator-container">
                 <div>Name Your Game</div>
-                <NameInput onChange={this.props.onNameChange} inputLabel="Name"/>
+                <input onChange={(e) => this.setState({gameName: e.target.value})}/>
+                <button onClick={this.props.onSubmit}>Enter</button>
             </div>
         );
     }
