@@ -371,7 +371,7 @@ For example:
 ### `Button.js`
 
 ```js
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Button extends Component {
   render() {
@@ -386,7 +386,7 @@ export default Button; // Don’t forget to use export default!
 
 
 ```js
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Button from './Button'; // Import a component from another file
 
 class DangerButton extends Component {
@@ -423,17 +423,17 @@ Here is an example:
 ```js
 const moduleA = 'Hello';
 
-export { moduleA };
+export {moduleA};
 ```
 ### `App.js`
 
 ```js
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class App extends Component {
   handleClick = () => {
     import('./moduleA')
-      .then(({ moduleA }) => {
+      .then(({moduleA}) => {
         // Use moduleA
       })
       .catch(err => {
@@ -476,7 +476,7 @@ This project setup uses [Webpack](https://webpack.js.org/) for handling all asse
 ### `Button.js`
 
 ```js
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './Button.css'; // Tell Webpack that Button.js uses these styles
 
 class Button extends Component {
@@ -1275,7 +1275,7 @@ You can write a smoke test with it too:
 
 ```js
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 import App from './App';
 
 it('renders without crashing', () => {
@@ -1291,7 +1291,7 @@ Here is an example from Enzyme documentation that asserts specific output, rewri
 
 ```js
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 import App from './App';
 
 it('renders welcome message', () => {
@@ -1337,7 +1337,7 @@ However, if you are used to other libraries, such as [Chai](http://chaijs.com/) 
 
 ```js
 import sinon from 'sinon';
-import { expect } from 'chai';
+import {expect} from 'chai';
 ```
 
 and then use them in your tests like you normally do.

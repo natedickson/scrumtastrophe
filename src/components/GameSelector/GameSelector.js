@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './GameSelector.css';
 
@@ -10,12 +10,12 @@ const propTypes = {
 class GameSelector extends Component {
 
     render() {
-        const items = this.props.games.map( function(game, i) {
+        const onItemClick = this.props.onItemClick;
+        const items = this.props.games.map( function(game) {
             return (
                 <li className="game-selector-item">
-                    <span>{ game.name }</span>
-                    <span>{ game.players }</span>
-                    <button onClick={() => this.props.onItemClick()}>Join</button>
+                    <span>{game.id}</span>
+                    <button onClick={() => onItemClick(game.id)}>Join</button>
                 </li>
             )
         });

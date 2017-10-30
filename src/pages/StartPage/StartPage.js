@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { observer } from 'mobx-react';
-// import GameTitle from '../../components/GameTitle/GameTitle';
+import {observer} from 'mobx-react';
+import GameTitle from '../../components/GameTitle/GameTitle';
 import MenuButton from '../../components/MenuButton/MenuButton';
 import GameSelector from '../../components/GameSelector/GameSelector';
 import './StartPage.css';
@@ -27,6 +27,7 @@ class StartPage extends Component {
             <div className="start-page-container">
                 {this.selectGameModal()}
                 {this.setPlayerModal()}
+                <GameTitle/>
                 <MenuButton onClick={this.createGame} label="Create Game"/>
                 <MenuButton onClick={this.selectGame} label="Join Game"/>
             </div>
@@ -35,7 +36,7 @@ class StartPage extends Component {
 
     selectGameModal = () => {
         return this.state.selectingGame ? (
-            <GameSelector games={this.props.store.games} onItemClick={this.blankFunc}/>
+            <GameSelector games={this.props.store.games} onItemClick={this.joinGame}/>
         ) : null;
     }
 
@@ -43,7 +44,7 @@ class StartPage extends Component {
         return this.props.store.currentPlayer.name === '' ? (
             <PopUp popupTitle="Welcome" popupContent={() => {
                 return (<PlayerSetter onSubmit={this.props.store.getPlayer}/>)
-            }} onExit={this.blankFunc} okayButton={false}/>
+            }} onExit={() => {return null}} okayButton={false}/>
         ) : null;
     }
 
@@ -58,8 +59,8 @@ class StartPage extends Component {
         this.props.store.createGame();
     }
 
-    blankFunc = () => {
-        alert('blank');
+    joinGame = (gameId) => {
+        this.props.store.joinGame();
     }
 }
 
