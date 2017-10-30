@@ -10,8 +10,9 @@ class NameInput extends Component {
     render() {
         return (
             <div className="single-input-component">
-                <label>{this.props.inputLabel}</label>
-                <input className="input" onChange={(e) => this.props.onChange(e)}></input>
+                <label>{this.props.inputLabel}
+                    <input className="input" onChange={this.props.onChange}></input>
+                </label>
             </div>
         );
     }

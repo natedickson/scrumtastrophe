@@ -9,11 +9,10 @@ const propTypes = {
 
 const MenuButton = ({onClick, label}) => {
     return (
-        <button className="menu-button" onClick={() => onClick()}>
+        <button className="menu-button" onClick={onClick}>
             {label}
         </button>
     );
 };
-
 MenuButton.propTypes = propTypes;
 export default MenuButton;

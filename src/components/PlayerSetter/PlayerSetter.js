@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
-import NameInput from "../NameInput/NameInput";
 import PropTypes from 'prop-types';
-import MenuButton from "../MenuButton/MenuButton";
 import './PlayerSetter.css';
 
 const propTypes = {
-    onNameChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
 };
 
 class PlayerSetter extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            playerName: ''
+        }
+    }
 
     render() {
         return (
             <div className="player-setter-container">
                 <div>Name Yourself</div>
-                <NameInput onChange={this.props.onNameChange} inputLabel="Name"/>
-                <MenuButton onClick={this.props.onSubmit} label="Enter"/>
+                <form onSubmit={this.submitNameChange}>
+                    <input onChange={(e) => this.setState({playerName: e.target.value})}/>
+                    <input type="submit"></input>
+                </form>
             </div>
         );
+    }
+
+    submitNameChange = () => {
+        this.props.onSubmit(this.state.playerName);
     }
 };
 

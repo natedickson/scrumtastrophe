@@ -7,8 +7,21 @@
     width: 100%;
     height: 10em;
     font-family: 'Poiret One', cursive;
+    border-radius: 1em;
 }
 
 .popup-container .popup-title {
-    margin-top: 1em;
+    margin: 1em 0 0 1em;
+    text-align: left;
+}
+.popup-container .popup-exit-button {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+.popup-container .popup-exit-button:after {
+    content: '✖'; /* UTF-8 symbol */
 }

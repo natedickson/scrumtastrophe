@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
-import GameTitle from '../../components/GameTitle/GameTitle'
+// import GameTitle from '../../components/GameTitle/GameTitle';
 import MenuButton from '../../components/MenuButton/MenuButton';
 import GameSelector from '../../components/GameSelector/GameSelector';
 import GameCreator from '../../components/GameCreator/GameCreator';
 import './StartPage.css';
 import PopUp from "../../components/PopUp/PopUp";
+import PlayerSetter from "../../components/PlayerSetter/PlayerSetter";
 
 const propTypes = {
-    store: PropTypes.object
+    store: PropTypes.object,
+    loader: PropTypes.object
 };
 
 @observer
@@ -18,9 +20,7 @@ class StartPage extends Component {
         super(props);
         this.state = {
             creatingGame: false,
-            selectingGame: false,
-            playerName: '',
-            gameName: '',
+            selectingGame: false
         }
     }
 
@@ -29,7 +29,7 @@ class StartPage extends Component {
             <div className="start-page-container">
                 {this.createGameModal()}
                 {this.selectGameModal()}
-                <GameTitle/>
+                {this.setPlayerModal()}
                 <MenuButton onClick={this.createGame} label="Create Game"/>
                 <MenuButton onClick={this.selectGame} label="Join Game"/>
             </div>
@@ -39,7 +39,7 @@ class StartPage extends Component {
     createGameModal = () => {
         return this.state.creatingGame ? (
             <PopUp popupTitle="Create Game" popupContent={() => {
-                return (<GameCreator onNameChange={this.changeGameName}/>)
+                return (<GameCreator onSubmit={this.createGameSubmit}/>)
             }} onExit={this.createGame} okayButton={false}/>
         ) : null;
     }
@@ -47,6 +47,14 @@ class StartPage extends Component {
     selectGameModal = () => {
         return this.state.selectingGame ? (
             <GameSelector games={this.props.store.games} onItemClick={this.blankFunc}/>
+        ) : null;
+    }
+
+    setPlayerModal = () => {
+        return this.props.store.currentPlayer.name === '' ? (
+            <PopUp popupTitle="Welcome" popupContent={() => {
+                return (<PlayerSetter onSubmit={this.props.store.setPlayer}/>)
+            }} onExit={this.blankFunc} okayButton={false}/>
         ) : null;
     }
 
@@ -61,18 +69,6 @@ class StartPage extends Component {
         const state = this.state;
         const currentState = state.creatingGame;
         state.creatingGame = !currentState;
-        this.setState(state);
-    }
-
-    changePlayerName = (e) => {
-        const state = this.state;
-        state.playerName = e.target.value;
-        this.setState(state);
-    }
-
-    changeGameName = (e) => {
-        const state = this.state;
-        state.gameName = e.target.value;
         this.setState(state);
     }
 

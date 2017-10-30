@@ -8,14 +8,14 @@ class GameStore {
     serverUrl = 'http://localhost:8080/';
     // Values marked as 'observable' can be watched by 'observers'
     @observable games = [];
-    @observable currentGame = {};
+    @observable currentGame = {id: 0};
     @observable currentPlayer = {name: ''};
 
     @computed get playerId() { return this.currentPlayer.id; }
 
-    @action setPlayer = (player) => { this.currentPlayer = player; };
+    @action setPlayer = (player) => { this.currentPlayer.name = player; };
     @action joinGame = (game) => { this.currentGame = game; };
-    @action setGames = (games) => { this.games = games; };
+    @action setGames = (games) => { this.games = games; }
     @action getGames() {
         loader.show();
         axios.get(this.serverUrl + 'games').then( response => {

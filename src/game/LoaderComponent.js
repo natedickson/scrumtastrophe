@@ -1,14 +1,15 @@
-import React from 'react';
-import { observer } from 'mobx-react';
+import React, { Component } from 'react';
 import './Loader.css';
 
-@observer
-class LoaderComponent {
+class LoaderComponent extends Component {
     render() {
         return (
-            <span className="loader-spinner"></span>
+            <div className="loader-container">
+                loading...
+                <span className="loader-spinner"></span>
+            </div>
         );
     }
-};
+}
 
 export default LoaderComponent;
