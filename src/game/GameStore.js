@@ -16,7 +16,7 @@ class GameStore {
     @action setPlayer = (player) => { this.currentPlayer = player; };
     @action getPlayer = (playerName) => {
         loader.show();
-        axios.post(this.serverUrl + 'player/create',playerName).then( (response) => {
+        axios.post(this.serverUrl + 'player/create', playerName, {headers: {'Content-type' : 'application/json'}}).then( (response) => {
             this.setPlayer(response.data);
             loader.hide();
         }, () => {
