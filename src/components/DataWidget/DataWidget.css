@@ -1,3 +1,7 @@
 .data-widget-container {
     display:inline-block;
+    margin-right: 25px;
+}
+
+.data-widget-label {
 }

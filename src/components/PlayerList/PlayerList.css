@@ -1,0 +1,35 @@
+.player-list-container {
+    margin: 0 auto;
+    width: 100%;
+    display: inline-block;
+}
+
+.player-list-headers > span { 
+    margin-bottom: 1rem;
+    text-decoration: underline;
+}
+
+.player-list-headers span:nth-of-type(1) {
+    width: 50%;
+    display: inline-block;
+}
+
+.player-list-headers span {
+    width: 16.66%;
+    display: inline-block;
+}
+
+.player-list-items span:nth-of-type(1) {
+    width: 50%;
+    display: inline-block;
+}
+
+.player-list-items span {
+    width: 16.66%;
+    display: inline-block;
+}
+
+.player-list-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -37,7 +37,7 @@ class StartPage extends Component {
     selectGameModal = () => {
         return this.state.selectingGame ? (
             <PopUp popupTitle="Join a Game" popupContent={() => {
-                return (<GameSelector games={this.props.store.games} onItemClick={this.joinGame}/>)
+                return (<GameSelector games={this.props.store.games} onSubmit={this.joinGame}/>)
             }} onExit={this.selectGame} okayButton={false}/>
         ) : null;
     }
