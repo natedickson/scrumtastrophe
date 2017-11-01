@@ -8,26 +8,27 @@ import LoaderComponent from './LoaderComponent';
 import GameHeader from '../components/GameHeader/GameHeader';
 
 const propTypes = {
-    store: PropTypes.object,
+    gameStore: PropTypes.object,
+    gameStateStore: PropTypes.object,
     loader: PropTypes.object
 };
 
 @observer
 class Game extends Component {
     componentWillMount() {
-        this.props.store.getGames();
-        this.props.store.getAvailablePlayerRoles();
+        this.props.gameStore.getGames();
+        this.props.gameStore.getAvailablePlayerRoles();
     }
 
     render() {
-        const {store, loader} = this.props;
+        const {gameStore, gameStateStore, loader} = this.props;
         return (
             <div className="game-container">
                 {loader.visible ? (<LoaderComponent/>) : null}
                 <div className="pages-container">
-                    <GameHeader playerName={store.currentPlayer.name} playerRole={store.currentPlayer.role} playerId={store.currentPlayer.id} gameId={store.currentGame.id}/>
-                    {!(store.isInGame) ? (<StartPage store={this.props.store} loader={this.props.loader}/>) : null}
-                    {store.isInGame  ? (<GamePage store={this.props.store} loader={this.props.loader}/>) : null}
+                    <GameHeader playerName={gameStore.currentPlayer.name} playerRole={gameStore.currentPlayer.role} playerId={gameStore.currentPlayer.id} gameId={gameStore.currentGame.id}/>
+                    {!(gameStore.isInGame) ? (<StartPage gameStore={gameStore} loader={loader}/>) : null}
+                    {gameStore.isInGame  ? (<GamePage gameStore={gameStore} gameState={gameStateStore} loader={loader}/>) : null}
                 </div>
             </div>
         );

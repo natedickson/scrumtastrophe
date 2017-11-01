@@ -5,14 +5,18 @@ import PlayerList from '../../components/PlayerList/PlayerList';
 import './GamePage.css';
 
 const propTypes = {
-    store: PropTypes.object,
+    gameStore: PropTypes.object,
+    gameState: PropTypes.object,
     loader: PropTypes.object
 }
 
 @observer
 class GamePage extends Component{
+    componentDidMount() {
+        this.gameState.initialize(this.props.gameStore.currentGame.gameState);
+    }
     render() {
-        const players = this.props.store.currentGame.players;
+        const players = this.props.gameStore.currentGame.players;
         return (
             <div className="game-page-container">
                 <div className="top-half">

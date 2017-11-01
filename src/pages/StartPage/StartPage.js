@@ -9,7 +9,7 @@ import PopUp from "../../components/PopUp/PopUp";
 import PlayerSetter from "../../components/PlayerSetter/PlayerSetter";
 
 const propTypes = {
-    store: PropTypes.object,
+    gameStore: PropTypes.object,
     loader: PropTypes.object
 };
 
@@ -37,15 +37,15 @@ class StartPage extends Component {
     selectGameModal = () => {
         return this.state.selectingGame ? (
             <PopUp popupTitle="Join a Game" popupContent={() => {
-                return (<GameSelector games={this.props.store.games} onSubmit={this.joinGame}/>)
+                return (<GameSelector games={this.props.gameStore.games} onSubmit={this.joinGame}/>)
             }} onExit={this.selectGame} okayButton={false}/>
         ) : null;
     }
 
     setPlayerModal = () => {
-        return this.props.store.currentPlayer.name === '' ? (
+        return this.props.gameStore.currentPlayer.name === '' ? (
             <PopUp popupTitle="Welcome" popupContent={() => {
-                return (<PlayerSetter onSubmit={this.props.store.getPlayer} availablePlayerRoles={this.props.store.availablePlayerRoles}/>)
+                return (<PlayerSetter onSubmit={this.props.gameStore.getPlayer} availablePlayerRoles={this.props.gameStore.availablePlayerRoles}/>)
             }} onExit={() => {return null}} okayButton={false}/>
         ) : null;
     }
@@ -58,11 +58,11 @@ class StartPage extends Component {
     }
 
     createGame = () => {
-        this.props.store.createGame();
+        this.props.gameStore.createGame();
     }
 
     joinGame = (gameId) => {
-        this.props.store.joinGame(gameId);
+        this.props.gameStore.joinGame(gameId);
     }
 }
 

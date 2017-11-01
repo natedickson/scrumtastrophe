@@ -9,7 +9,7 @@ class GameStore {
     // Values marked as 'observable' can be watched by 'observers'
     @observable games = [];
     @observable availablePlayerRoles = [];
-    @observable currentGame = {id: 0, gameStateCounter: 0};
+    @observable currentGame = {id: 0};
     @observable currentPlayer = {name: ''};
 
     @computed get playerId() { return this.currentPlayer.id; }
@@ -89,7 +89,7 @@ class GameStore {
     };
 }
 
-const store = new GameStore();
+const gameStore = new GameStore();
 
-export default store;
+export default gameStore;
 export {GameStore};
