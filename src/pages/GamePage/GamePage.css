@@ -1,5 +1,5 @@
 .game-page-container .top-half {
-    height: 60em;
+    height: 70vh;
     width: 100%;
     background-color: #444444;
     padding: 10px;
@@ -8,7 +8,7 @@
 .game-page-container .top-half .game-board-container{
     text-align: left;
     display: inline-block;
-    width: 68%;
+    width: 70%;
     height: 100%;
 }
 .game-page-container .top-half .player-list-container{

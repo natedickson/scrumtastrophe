@@ -1,0 +1,26 @@
+.game-selector-item span{
+    width: 50%;
+    display: inline-block;
+}
+
+.game-selector-container > table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.game-selector-container > table > tr > th {
+    width: 33%;
+}
+
+.game-selector-item {
+    width: 33%;
+}
+
+.game-selector-item:focus {
+    background-color: #767676;
+    outline: none;
+}
+td:focus {
+    padding: 0;
+    border: none;
+}

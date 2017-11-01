@@ -12,12 +12,12 @@ class PlayerListEntry extends Component {
     render() {
         const player = this.props.player;
         return (
-            <div className="autowide">
-                <span className="player-list-items">{player.name}</span>
-                <span className="player-list-items">{player.id}</span>
-                <span className="player-list-items">{player.role}</span>
+            <div className="player-list-items">
+                <span className="player-list-name">{player.name}</span>
+                <span>{player.id}</span>
+                <span>{player.role}</span>
                 {/* <span>{player.points}</span> */}
-                <span className="player-list-items">15</span>
+                <span>15</span>
             </div>
         )
     }

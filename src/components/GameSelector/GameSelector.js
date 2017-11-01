@@ -4,26 +4,40 @@ import './GameSelector.css';
 
 const propTypes = {
     games: PropTypes.object.isRequired,
-    onItemClick: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
 };
 
 class GameSelector extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: 0
+        }
+    }
+
     render() {
-        const onItemClick = this.props.onItemClick;
-        const items = this.props.games.map( function(game) {
+        const onSubmit = this.props.onSubmit;
+        const Items = this.props.games.map((game, index) => {
             return (
-                <li key={game.id} className="game-selector-item">
-                    <span>{game.id}</span>
-                    <button onClick={() => onItemClick(game.id)}>Join</button>
-                </li>
-            )
+                <tr key={game.id} className="game-selector-item" tabIndex={index} onClick={() => this.setState({selected:game.id})}>
+                    <td>{game.id}</td>
+                    <td>{game.owner.name}</td>
+                    <td>{(game.players).length}</td>
+                </tr>
+            )       
         });
         return (
             <div className="game-selector-container">
-                <ul className="game-selector-list">
-                    {items}
-                </ul>
+                <table>
+                    <tr>
+                        <th>Game ID</th>
+                        <th>Game Owner</th>
+                        <th>Number of Players</th>
+                    </tr>
+                    {Items}
+                    <td><button onClick={() => onSubmit(this.state.selected)}>Join</button></td>
+                </table>
             </div>
         );
     }

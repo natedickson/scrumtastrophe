@@ -18,11 +18,11 @@ class PlayerList extends Component {
         });
         return (
             <div className="player-list-container">
-                <div className="autowide">
-                    <span className="player-list-headers">Name</span>
-                    <span className="player-list-headers">Id</span>
-                    <span className="player-list-headers">Role</span>
-                    <span className="player-list-headers">Points</span>
+                <div className="player-list-headers">
+                    <span>Name</span>
+                    <span>Id</span>
+                    <span>Role</span>
+                    <span>Points</span>
                 </div>
                 {players}
             </div>
