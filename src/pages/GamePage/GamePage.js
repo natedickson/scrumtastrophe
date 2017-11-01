@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {observer} from 'mobx-react';
 import PropTypes from 'prop-types';
 import PlayerList from '../../components/PlayerList/PlayerList';
+import './GamePage.css';
 
 const propTypes = {
     store: PropTypes.object,

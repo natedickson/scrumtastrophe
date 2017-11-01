@@ -17,6 +17,9 @@ class PlayerList extends Component {
         });
         return (
             <div className="player-list-container">
+                <div>
+                    <span>Name : Id : Role</span>
+                </div>
                 {players}
             </div>
         )

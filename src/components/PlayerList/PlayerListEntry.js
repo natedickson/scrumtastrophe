@@ -12,9 +12,7 @@ class PlayerListEntry extends Component {
         const player = this.props.player;
         return (
             <div className="player-list-entry">
-                <span>{player.name}</span>
-                <span> : </span>
-                <span>{player.id}</span>
+                <span>{player.name} : {player.id} : {player.role}</span>
             </div>
         )
     }
