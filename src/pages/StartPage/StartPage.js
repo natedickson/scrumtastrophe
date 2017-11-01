@@ -45,7 +45,7 @@ class StartPage extends Component {
     setPlayerModal = () => {
         return this.props.store.currentPlayer.name === '' ? (
             <PopUp popupTitle="Welcome" popupContent={() => {
-                return (<PlayerSetter onSubmit={this.props.store.getPlayer}/>)
+                return (<PlayerSetter onSubmit={this.props.store.getPlayer} availablePlayerRoles={this.props.store.availablePlayerRoles}/>)
             }} onExit={() => {return null}} okayButton={false}/>
         ) : null;
     }
