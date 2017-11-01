@@ -22,7 +22,7 @@ class Game extends Component {
         return (
             <div className="game-container">
                 {loader.visible ? (<LoaderComponent/>) : null}
-                <GameHeader playerName={store.currentPlayer.name} playerId={store.currentPlayer.id} gameId={store.currentGame.id}/>
+                <GameHeader playerName={store.currentPlayer.name} playerRole={store.currentPlayer.playerRole} playerId={store.currentPlayer.id} gameId={store.currentGame.id}/>
                 {!(store.isInGame) ? (<StartPage store={this.props.store} loader={this.props.loader}/>) : null}
                 {store.isInGame  ? (<GamePage store={this.props.store} loader={this.props.loader}/>) : null}
             </div>
