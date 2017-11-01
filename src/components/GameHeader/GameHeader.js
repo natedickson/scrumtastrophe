@@ -5,6 +5,7 @@ import DataWidget from '../DataWidget/DataWidget';
 
 const propTypes = {
     playerName: PropTypes.string,
+    playerRole: PropTypes.playerRole,
     playerId: PropTypes.number,
     gameId: PropTypes.number
 };
@@ -15,6 +16,7 @@ class GameHeader extends Component {
         return (
             <div className="game-header-container">
                 <DataWidget label="Player Name" data={this.props.playerName}/>
+                <DataWidget label="Player Role" data={this.props.playerRole}/>
                 <DataWidget label="Player Id" data={this.props.playerId}/>
                 {this.props.gameId !== 0 ? (<DataWidget label="Game Id" data={this.props.gameId}/>) : (<div>Not in game.</div>)}
             </div>
