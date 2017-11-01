@@ -12,7 +12,7 @@ class PlayerList extends Component {
     render() {
         const players = this.props.players.map((player) => {
             return (
-                <PlayerListEntry player={player}/>
+                <PlayerListEntry key={player.id} player={player}/>
             )
         });
         return (

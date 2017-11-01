@@ -13,7 +13,7 @@ class GameSelector extends Component {
         const onItemClick = this.props.onItemClick;
         const items = this.props.games.map( function(game) {
             return (
-                <li className="game-selector-item">
+                <li key={game.id} className="game-selector-item">
                     <span>{game.id}</span>
                     <button onClick={() => onItemClick(game.id)}>Join</button>
                 </li>
