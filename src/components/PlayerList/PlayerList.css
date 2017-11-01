@@ -3,6 +3,7 @@
 .player-list-container {
     margin: 0 auto;
     width: 98%;
+    
 }
 
 .player-list-container .player-list-headers { 
@@ -16,9 +17,13 @@
         float: left;
         margin-right: 2.564102564102564%;
         width: 48.717948717948715%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .autowide .player-list-headers:nth-child(2n+0), .player-list-items:nth-child(2n+0) {
         margin-right: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -26,12 +31,18 @@
 @media only screen and (min-width: 768px) {
 .autowide .player-list-headers, .player-list-items {
         width: 31.623931623931625%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .autowide .player-list-headers:nth-child(2n+0), .player-list-items:nth-child(2n+0) {
         margin-right: 2.564102564102564%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .autowide .player-list-headers:nth-child(3n+0), .player-list-items:nth-child(3n+0) {
         margin-right: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -39,11 +50,17 @@
 @media only screen and (min-width: 992px) {
 .autowide .player-list-headers, .player-list-items {
         width: 23.076923076923077%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .autowide .player-list-headers:nth-child(3n+0), .player-list-items:nth-child(3n+0){
         margin-right: 2.564102564102564%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .autowide .player-list-headers:nth-child(4n+0), .player-list-items:nth-child(4n+0) {
         margin-right: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
