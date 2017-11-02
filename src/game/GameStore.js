@@ -44,7 +44,7 @@ class GameStore {
             gameId: gameId
         };
         axios.patch(this.serverUrl + 'games/join', data, {headers: {'Content-type' : 'application/json'}}).then( (response) => {
-            if(response.data === null) {
+            if(typeof response.data === "undefined" || response.data === null) {
                 console.log('no game found');
                 return;
             }

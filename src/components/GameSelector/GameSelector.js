@@ -18,6 +18,7 @@ class GameSelector extends Component {
 
     render() {
         const onSubmit = this.props.onSubmit;
+        const selectedGameId = this.state.selected;
         const Items = this.props.games.map((game, index) => {
             return (
                 <tr key={game.id} className="game-selector-item" tabIndex={index} onClick={() => this.setState({selected:game.id})}>
@@ -30,14 +31,18 @@ class GameSelector extends Component {
         return (
             <div className="game-selector-container">
                 <table>
-                    <tr>
-                        <th>Game ID</th>
-                        <th>Game Owner</th>
-                        <th>Number of Players</th>
-                    </tr>
-                    {Items}
-                    <td><button onClick={() => onSubmit(this.state.selected)}>Join</button></td>
+                    <thead>
+                        <tr>
+                            <th>Game ID</th>
+                            <th>Game Owner</th>
+                            <th>Number of Players</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Items}
+                    </tbody>
                 </table>
+                <button onClick={() => onSubmit(selectedGameId)}>Join Selected Game</button>
             </div>
         );
     }

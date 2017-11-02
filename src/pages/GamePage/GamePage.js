@@ -12,11 +12,12 @@ const propTypes = {
 
 @observer
 class GamePage extends Component{
-    componentDidMount() {
-        this.gameState.initialize(this.props.gameStore.currentGame.gameState);
+    componentWillMount() {
+        this.props.gameState.initialize(this.props.gameStore.currentGame.id, this.props.gameStore.playerId);
     }
     render() {
-        const players = this.props.gameStore.currentGame.players;
+        const gameState = this.props.gameState;
+        const players = gameState.playerSummaries;
         return (
             <div className="game-page-container">
                 <div className="top-half">
