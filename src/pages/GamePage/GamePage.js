@@ -20,13 +20,14 @@ class GamePage extends Component{
         const players = gameState.playerSummaries;
         return (
             <div className="game-page-container">
-                <div className="top-half">
-                    <div className="game-board-container">GameBoard</div>
+                <span className="left-container">
+                    <div className="game-board">GameBoard</div>
+                    <div className="game-actions">Actions</div>
+                </span>
+                <span className="right-container">
                     <PlayerList players={players}/>
-                </div>
-                <div className="bottom-half">
-                    <div className="game-actions-container">Actions</div>
-                </div>
+                    <div className="game-chat">Chat Box</div>
+                </span>
             </div>
         )
     }
