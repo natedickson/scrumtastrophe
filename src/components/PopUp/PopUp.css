@@ -5,13 +5,17 @@
     position: absolute;
     top: 30%;
     width: 100%;
-    height: 10em;
+    height: 16em;
     font-family: 'Poiret One', cursive;
-    border-radius: 1em;
+    border-radius: .3em;
+    border: 4px solid #666666;
+    border-bottom-color: #444444;
+    border-left-color: #444444;
+    box-shadow: 1em 1em 5em #000000;
 }
 
 .popup-container .popup-title {
-    margin: 1em 0 0 1em;
+    margin: 1em 0 1em 1em;
     text-align: left;
 }
 .popup-container .popup-exit-button {
@@ -21,6 +25,10 @@
     background-color: transparent;
     border: none;
     padding: 0;
+    cursor: pointer;
+}
+.popup-container .popup-exit-button:hover {
+    font-weight: 900;
 }
 .popup-container .popup-exit-button:after {
     content: '✖'; /* UTF-8 symbol */

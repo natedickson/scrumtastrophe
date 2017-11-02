@@ -1,0 +1,21 @@
+.player-setter-container button {
+    margin-top: 1em;
+}
+
+.player-setter-container input {
+    font-family: 'Poiret One', cursive;
+    padding: .4em .6em;
+    border-radius: .3em;
+}
+.player-setter-container input:focus {
+    outline: none;
+}
+
+.player-setter-container select {
+    font-family: 'Poiret One', cursive;
+    padding: .4em .6em;
+    border-radius: .3em;
+}
+.player-setter-container select:focus {
+    outline: none;
+}

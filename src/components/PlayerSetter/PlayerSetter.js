@@ -37,9 +37,11 @@ class PlayerSetter extends Component {
             <div className="player-setter-container">
                 <div>Name Yourself</div>
                 <input onChange={(e) => this.updatePlayerName(e)} value={this.state.playerName}/>
+                <div>Name Your Role</div>
                 <select onChange={(e) => this.updatePlayerRole(e)} value={this.state.playerRole}>
                     {roleSelectOptions}
                 </select>
+                <br/>
                 <button onClick={this.submitNameChange}>Enter</button>
             </div>
         );

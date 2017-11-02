@@ -6,6 +6,7 @@
 .game-selector-container > table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 1em;
 }
 
 .game-selector-container > table > tr > th {
