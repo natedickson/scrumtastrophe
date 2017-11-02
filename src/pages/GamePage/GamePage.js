@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {observer} from 'mobx-react';
 import PropTypes from 'prop-types';
 import PlayerList from '../../components/PlayerList/PlayerList';
+import ChatBox from '../../components/ChatBox/ChatBox';
 import './GamePage.css';
 
 const propTypes = {
@@ -18,6 +19,7 @@ class GamePage extends Component{
     render() {
         const gameState = this.props.gameState;
         const players = gameState.playerSummaries;
+        const chatLog = gameState.chatLog;
         return (
             <div className="game-page-container">
                 <span className="left-container">
@@ -26,7 +28,7 @@ class GamePage extends Component{
                 </span>
                 <span className="right-container">
                     <PlayerList players={players}/>
-                    <div className="game-chat">Chat Box</div>
+                    <ChatBox chatLog={chatLog} gameState={gameState}/>
                 </span>
             </div>
         )

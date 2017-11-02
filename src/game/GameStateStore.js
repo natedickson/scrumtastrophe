@@ -13,6 +13,7 @@ class GameStateStore {
     @observable currentState = 0; //this is a (Long), serves as a counter
     @observable availableLoad = 0; //the players available workload for the game
     @observable playerSummaries = []; //to populate the playerlist
+    @observable chatLog = []; //to populate the chat box
 
     @action setCurrentState = (state) => {
         this.currentState = state;
@@ -23,6 +24,9 @@ class GameStateStore {
     @action setPlayerSummaries = (playerSummaries) => {
         this.playerSummaries = playerSummaries;
     };
+    @action setChatLog = (chatLog) => {
+        this.chatLog = chatLog;
+    };
 
     @action initialize = (gameId, playerId) => {
         loader.show();
@@ -32,6 +36,7 @@ class GameStateStore {
             this.setCurrentState(response.data.currentState);
             this.setAvailableLoad(response.data.availableLoad);
             this.setPlayerSummaries(response.data.playerSummaries);
+            this.setChatLog(response.data.chatMessages);
             setTimeout(() => {this.beginSync()}, 1000);
             loader.hide();
         }, () => {
@@ -43,11 +48,24 @@ class GameStateStore {
         this.syncGameState();
     };
 
+    @action sendMessage = (message) => {
+        let messagePayload = {
+            playerId: this.playerId,
+            gameId: this.gameId,
+            message: message
+        };
+        axios.post(this.serverUrl + 'game/chat', messagePayload, {headers: {'Content-type' : 'application/json'}})
+            .then((response) => {
+                this.setChatLog(response.data)
+            })
+    };
+
     syncGameState = () => {
         axios.get(this.serverUrl + 'game/state?gameId=' + this.gameId + '&playerId=' + this.playerId).then((response) => {
             this.setCurrentState(response.data.currentState);
             this.setAvailableLoad(response.data.availableLoad);
             this.setPlayerSummaries(response.data.playerSummaries);
+            this.setChatLog(response.data.chatMessages);
             if(this.sync) {
                 setTimeout(() => {this.syncGameState()}, 1000);
             }
