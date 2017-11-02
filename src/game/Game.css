@@ -10,5 +10,29 @@ button:hover {
     border: 1px solid gray;
     /*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
 }
+button:active {
+    border: 1px solid black;
+}
 
+input {
+    font-family: 'Poiret One', cursive;
+    font-size: 1em;
+    padding: .4em .6em;
+    border-radius: .3em;
+}
+input:focus {
+    outline: none;
+}
 
+select {
+    font-family: 'Poiret One', cursive;
+    font-size: 1em;
+    padding: .4em .6em;
+    border-radius: .3em;
+}
+select:focus {
+    outline: none;
+}
+select:active {
+    outline: none;
+}
