@@ -1,18 +1,35 @@
-.game-page-container .top-half {
-    height: 70vh;
+.game-page-container {
+    height: 80vh;
     width: 100%;
-    background-color: #444444;
-    padding: 10px;
+}
+
+.left-container {
+    float: left;
+    height: inherit;
+    width:70%;
     margin-top: 20px;
 }
-.game-page-container .top-half .game-board-container{
-    text-align: left;
-    display: inline-block;
-    width: 70%;
-    height: 100%;
+
+.game-board {
+    height: 60vh;
+    background-color: rgb(85, 85, 85);
 }
-.game-page-container .top-half .player-list-container{
-    display: inline-block;
-    width: 30%;
-    height: 100%;
+
+.game-actions {
+    height: 20vh;
+}
+
+.right-container {
+    float: left;
+    height: inherit;
+    width:30%;
+    margin-top: 20px;
+}
+
+.player-list-container {
+    height: 40vh;
+}
+
+.game-chat {
+    height: 40vh;
 }

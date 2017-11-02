@@ -6,10 +6,9 @@
 .game-selector-container > table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1em;
 }
 
-.game-selector-container > table > tr > th {
+.game-selector-container > table > thead > tr > th {
     width: 33%;
 }
 
@@ -17,10 +16,13 @@
     width: 33%;
 }
 
-.game-selector-item:focus {
-    background-color: #767676;
+.game-selector-item:focus, .game-selector-item:hover {
+    background-color: #4d4b4b;
+    color: white;
     outline: none;
+    padding: 15px;
 }
+
 td:focus {
     padding: 0;
     border: none;
