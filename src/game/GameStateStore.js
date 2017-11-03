@@ -86,6 +86,11 @@ class GameStateStore {
             }
         })
     }
+
+    doAction = (action) => {
+        //TODO: implement
+        axios.post(this.serverUrl + 'action/' + action.action, this.context, {headers: {'Content-type' : 'application/json'}});
+    }
     //{headers: {'Content-type' : 'application/json'}}
 }
 

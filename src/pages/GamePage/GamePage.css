@@ -11,12 +11,12 @@
     margin-right: 3%;
 }
 
-.game-board {
+.game-board-container {
     height: 60vh;
     background-color: rgb(85, 85, 85);
 }
 
-.game-actions {
+.player-actions-container {
     height: 20vh;
 }
 

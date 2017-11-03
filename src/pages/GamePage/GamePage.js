@@ -5,6 +5,7 @@ import PlayerList from '../../components/PlayerList/PlayerList';
 import ChatBox from '../../components/ChatBox/ChatBox';
 import './GamePage.css';
 import GameBoard from "../../components/GameBoard/GameBoard";
+import PlayerActions from "../../components/PlayerActions/PlayerActions";
 
 const propTypes = {
     gameStore: PropTypes.object,
@@ -22,11 +23,12 @@ class GamePage extends Component{
         const players = gameState.playerSummaries;
         const chatLog = gameState.chatLog;
         const stories = gameState.sprintStories;
+        const actions = gameState.availableActions;
         return (
             <div className="game-page-container">
                 <span className="left-container">
                     <GameBoard sprintStories={stories}/>
-                    <div className="game-actions">Actions</div>
+                    <PlayerActions availableActions={actions} actionCallback={gameState.doAction}/>
                 </span>
                 <span className="right-container">
                     <PlayerList players={players}/>

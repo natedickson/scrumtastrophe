@@ -15,7 +15,7 @@ class GameBoard extends Component {
             return(<Story story={story}/>)
         });
         return (
-            <div className="game-board">
+            <div className="game-board-container">
                 {Stories}
             </div>
         )
