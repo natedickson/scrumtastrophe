@@ -1,3 +1,12 @@
 .player-setter-container button {
     margin-top: 1em;
 }
+
+.player-setter-container a {
+    cursor: pointer;
+    color: blue;
+}
+.player-setter-container a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

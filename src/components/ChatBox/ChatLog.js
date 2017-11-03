@@ -4,14 +4,14 @@ import {observer} from 'mobx-react';
 
 const propTypes = {
     chatLog: PropTypes.object.isRequired
-}
+};
 
 @observer
 class ChatLog extends Component {
     render() {
-        const chatLog = this.props.chatLog.map((message) => {
+        const chatLog = this.props.chatLog.map((message, index) => {
             return (
-                <div>
+                <div key={index}>
                     {message}
                 </div>
             )

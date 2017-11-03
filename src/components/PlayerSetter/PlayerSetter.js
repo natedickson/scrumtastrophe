@@ -13,8 +13,10 @@ class PlayerSetter extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            alreadyHasId: false,
             playerName: '',
-            playerRole: ''
+            playerRole: '',
+            playerId: ''
         }
     }
 
@@ -35,14 +37,28 @@ class PlayerSetter extends Component {
         });
         return (
             <div className="player-setter-container">
-                <div>Name Yourself</div>
-                <input onChange={(e) => this.updatePlayerName(e)} value={this.state.playerName}/>
-                <div>Name Your Role</div>
-                <select onChange={(e) => this.updatePlayerRole(e)} value={this.state.playerRole}>
-                    {roleSelectOptions}
-                </select>
-                <br/>
-                <button onClick={this.submitNameChange}>Enter</button>
+                {this.state.alreadyHasId ? (
+                    <div>
+                        <div>Player Id</div>
+                        <input onChange={(e) => this.updatePlayerId(e)} value={this.state.playerId}/>
+                    </div>
+                ) : (
+                    <div>
+                        <div>Name Yourself</div>
+                        <input onChange={(e) => this.updatePlayerName(e)} value={this.state.playerName}/>
+                        <div>Name Your Role</div>
+                        <select onChange={(e) => this.updatePlayerRole(e)} value={this.state.playerRole}>
+                            {roleSelectOptions}
+                        </select>
+                    </div>
+                )}
+                <button onClick={this.submitChange}>Enter</button>
+                {this.state.alreadyHasId ? null : (
+                    <div>
+                        <br/>
+                        <a onClick={this.doOtherThing}>Already have a player id?</a>
+                    </div>
+                )}
             </div>
         );
     }
@@ -59,13 +75,25 @@ class PlayerSetter extends Component {
         this.setState(state);
     };
 
-    submitNameChange = () => {
+    updatePlayerId = (e) => {
+        const state = this.state;
+        state.playerId = e.target.value;
+        this.setState(state);
+    };
+
+    submitChange = () => {
         let data = {
             name: this.state.playerName,
             role: this.state.playerRole
         };
         this.props.onSubmit(data);
-    }
+    };
+
+    doOtherThing = () => {
+        const state = this.state;
+        state.alreadyHasId = true;
+        this.setState(state);
+    };
 }
 
 PlayerSetter.propTypes = propTypes;

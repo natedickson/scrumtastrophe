@@ -11,8 +11,8 @@ const propTypes = {
 @observer
 class PlayerActions extends Component {
     render() {
-        const Actions = this.props.availableActions.map( (action) => {
-            return(<button onClick={() => this.props.actionCallback(action)}>{action.label}</button>)
+        const Actions = this.props.availableActions.map( (action, index) => {
+            return(<button key={index} onClick={() => this.props.actionCallback(action)}>{action.label}</button>)
         });
         return (
             <div className="player-actions-container">

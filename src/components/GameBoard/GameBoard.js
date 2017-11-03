@@ -12,7 +12,7 @@ const propTypes = {
 class GameBoard extends Component {
     render() {
         const Stories = this.props.sprintStories.map( (story) => {
-            return(<Story story={story}/>)
+            return(<Story key={story.id} story={story}/>)
         });
         return (
             <div className="game-board-container">
