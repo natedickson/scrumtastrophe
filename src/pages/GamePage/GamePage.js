@@ -32,7 +32,7 @@ class GamePage extends Component{
                 </span>
                 <span className="right-container">
                     <PlayerList players={players}/>
-                    <ChatBox chatLog={chatLog} gameState={gameState}/>
+                    <ChatBox chatLog={chatLog} sendMessage={gameState.sendMessage}/>
                 </span>
             </div>
         )

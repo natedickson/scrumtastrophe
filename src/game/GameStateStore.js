@@ -18,6 +18,7 @@ class GameStateStore {
     @observable availableActions = []; //array of action objects that have a label and data about the action
     @observable playerSummaries = []; //to populate the playerlist
     @observable chatLog = []; //to populate the chat box
+    @observable typedMessage = '';
     @observable sprintStories = []; //to be displayed on the board
 
     @action setCurrentState = (state) => {
@@ -62,15 +63,17 @@ class GameStateStore {
     };
 
     @action sendMessage = (message) => {
-        let messagePayload = {
-            playerId: this.playerId,
-            gameId: this.gameId,
-            message: message
-        };
-        axios.post(this.serverUrl + 'game/chat', messagePayload, {headers: {'Content-type' : 'application/json'}})
-            .then((response) => {
-                this.setChatLog(response.data)
-            })
+        if(message) {
+            let messagePayload = {
+                playerId: this.context.playerId,
+                gameId: this.context.gameId,
+                message: message
+            };
+            axios.post(this.serverUrl + 'game/chat', messagePayload, {headers: {'Content-type': 'application/json'}})
+                .then((response) => {
+                    this.setChatLog(response.data)
+                })
+        }
     };
 
     syncGameState = () => {
@@ -85,7 +88,7 @@ class GameStateStore {
                 setTimeout(() => {this.syncGameState()}, 1000);
             }
         })
-    }
+    };
 
     doAction = (action) => {
         //TODO: implement

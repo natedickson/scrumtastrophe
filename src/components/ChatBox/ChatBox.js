@@ -5,17 +5,17 @@ import ChatInput from './ChatInput';
 
 const propTypes = {
     chatLog: PropTypes.object.isRequired,
-    gameState: PropTypes.object.isRequired
+    sendMessage: PropTypes.func.isRequired
 }
 
 class ChatBox extends Component {
     render() {
         const chatLog = this.props.chatLog;
-        const gameState = this.props.gameState;
+        const sendMessage = this.props.sendMessage;
         return(
             <div>
                 <ChatLog chatLog={chatLog}/>
-                <ChatInput gameState={gameState}/>
+                <ChatInput sendMessage={sendMessage}/>
             </div>
         )
     }
