@@ -57,16 +57,16 @@ class PlayerSetter extends Component {
         const state = this.state;
         state.playerRole = e.target.value;
         this.setState(state);
-    }
+    };
 
     submitNameChange = () => {
         let data = {
             name: this.state.playerName,
             role: this.state.playerRole
-        }
+        };
         this.props.onSubmit(data);
     }
-};
+}
 
 PlayerSetter.propTypes = propTypes;
 export default PlayerSetter;
