@@ -6,8 +6,9 @@
 .left-container {
     float: left;
     height: inherit;
-    width:70%;
+    width:72%;
     margin-top: 20px;
+    margin-right: 3%;
 }
 
 .game-board {
@@ -22,7 +23,7 @@
 .right-container {
     float: left;
     height: inherit;
-    width:30%;
+    width:25%;
     margin-top: 20px;
 }
 

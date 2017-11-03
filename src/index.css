@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 2em 0 2em;
   font-family: sans-serif;
   background: #0f0f0f;
   background: radial-gradient(circle, #0c3c27 5%, #0c331f 10%, #071d11);

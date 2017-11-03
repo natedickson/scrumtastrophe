@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import PlayerList from '../../components/PlayerList/PlayerList';
 import ChatBox from '../../components/ChatBox/ChatBox';
 import './GamePage.css';
+import GameBoard from "../../components/GameBoard/GameBoard";
 
 const propTypes = {
     gameStore: PropTypes.object,
@@ -20,10 +21,11 @@ class GamePage extends Component{
         const gameState = this.props.gameState;
         const players = gameState.playerSummaries;
         const chatLog = gameState.chatLog;
+        const stories = gameState.sprintStories;
         return (
             <div className="game-page-container">
                 <span className="left-container">
-                    <div className="game-board">GameBoard</div>
+                    <GameBoard sprintStories={stories}/>
                     <div className="game-actions">Actions</div>
                 </span>
                 <span className="right-container">

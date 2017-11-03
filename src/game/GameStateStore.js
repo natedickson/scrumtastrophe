@@ -6,14 +6,19 @@ useStrict(true); //strict mode: observable state only modifiable by actions
 
 class GameStateStore {
     serverUrl = 'http://localhost:8080/';
-    gameId = 0;
-    playerId = 0;
+    context = {
+        playerId: 0,
+        gameId: 0
+    };
+
     sync = false;
 
     @observable currentState = 0; //this is a (Long), serves as a counter
     @observable availableLoad = 0; //the players available workload for the game
+    @observable availableActions = []; //array of action objects that have a label and data about the action
     @observable playerSummaries = []; //to populate the playerlist
     @observable chatLog = []; //to populate the chat box
+    @observable sprintStories = []; //to be displayed on the board
 
     @action setCurrentState = (state) => {
         this.currentState = state;
@@ -27,16 +32,24 @@ class GameStateStore {
     @action setChatLog = (chatLog) => {
         this.chatLog = chatLog;
     };
+    @action setSprintStories = (stories) => {
+        this.sprintStories = stories;
+    };
+    @action setAvailableActions = (actions) => {
+        this.availableActions = actions;
+    };
 
     @action initialize = (gameId, playerId) => {
         loader.show();
-        this.gameId = gameId;
-        this.playerId = playerId;
+        this.context.gameId = gameId;
+        this.context.playerId = playerId;
         axios.get(this.serverUrl + 'game/state?gameId=' + gameId + '&playerId=' + playerId).then((response) => {
             this.setCurrentState(response.data.currentState);
             this.setAvailableLoad(response.data.availableLoad);
             this.setPlayerSummaries(response.data.playerSummaries);
             this.setChatLog(response.data.chatMessages);
+            this.setSprintStories(response.data.sprintStories);
+            this.setAvailableActions(response.data.availableActions);
             setTimeout(() => {this.beginSync()}, 1000);
             loader.hide();
         }, () => {
@@ -61,11 +74,13 @@ class GameStateStore {
     };
 
     syncGameState = () => {
-        axios.get(this.serverUrl + 'game/state?gameId=' + this.gameId + '&playerId=' + this.playerId).then((response) => {
+        axios.get(this.serverUrl + 'game/state?gameId=' + this.context.gameId + '&playerId=' + this.context.playerId).then((response) => {
             this.setCurrentState(response.data.currentState);
             this.setAvailableLoad(response.data.availableLoad);
             this.setPlayerSummaries(response.data.playerSummaries);
             this.setChatLog(response.data.chatMessages);
+            this.setSprintStories(response.data.sprintStories);
+            this.setAvailableActions(response.data.availableActions);
             if(this.sync) {
                 setTimeout(() => {this.syncGameState()}, 1000);
             }

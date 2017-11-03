@@ -1,0 +1,9 @@
+.story-container {
+    display: inline-block;
+    border: 1px solid darkgreen;
+    background: black;
+    color: gray;
+    cursor: default;
+    margin: .4em;
+    padding: .3em;
+}
