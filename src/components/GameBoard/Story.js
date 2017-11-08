@@ -10,7 +10,7 @@ class Story extends Component {
         const story = this.props.story;
         return (
             <div className="story-container">
-                <div>Id: {story.id}</div>
+                <div>Story {story.id}</div>
                 <div>Dev: {story.dev}</div>
                 <div>QA: {story.qa}</div>
             </div>

@@ -1,3 +1,9 @@
 .game-header-container {
     padding: 20px 20px 0 20px;
 }
+
+.data-widget-container {
+}
+.data-widget-container:last-of-type {
+    float: right;
+}

@@ -1,9 +1,100 @@
+.game-board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.white-board {
+    font-family: 'Permanent Marker', sans-serif, arial;
+    color: blue;
+    background: #f2f2f2;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: .5em;
+    border: 10px solid #adb2bd;
+    box-shadow: inset -1px 2px 2px #404040, 6px 9px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.eraser {
+    position: absolute;
+    height: 1.4em;
+    width: 5em;
+    bottom: 0;
+    right: 5em;
+    background: #2929a3;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 6px solid darkslategray;
+}
+
+.red-pen {
+    position: absolute;
+    height: .6em;
+    width: 4em;
+    bottom: 0;
+    right: 11em;
+    background: #FD7C6E;
+    border-bottom: .2em solid #fc604f;
+    border-right: .7em solid #9a4a3a;
+}
+
+.blue-pen {
+    position: absolute;
+    height: .6em;
+    width: 4em;
+    bottom: 0;
+    right: 16em;
+    background: #1f75fe;
+    border-bottom: .2em solid #014ecb;
+    border-right: .7em solid #0143a6;
+}
+
+.game-board-header {
+    font-size: 1.6em;
+    text-align: center;
+}
+
 .story-container {
     display: inline-block;
-    border: 1px solid darkgreen;
-    background: black;
-    color: gray;
+    background: #dfff8f;
+    box-shadow: 6px 10px 1px -2px rgba(0, 0, 0, 0.1);
+    color: #484848;
     cursor: default;
     margin: .4em;
     padding: .3em;
+    font-size: .9em;
+    width: 37%;
+    min-width: 4em;
+    font-family: 'Indie Flower', cursive;
+}
+
+.board-column {
+    border-right: 2px solid blue;
+    vertical-align: top;
+    display: inline-block;
+    width: 22%;
+    height: 100%;
+}
+.board-column-label {
+    display: block;
+    padding-left: 1em;
+    border-bottom: 2px solid blue;
+}
+.board-column-stories {
+    display: block;
+    height: 95%;
+}
+.sprint-backlog {
+}
+.sprint-in-dev {
+}
+.sprint-in-code-review {
+}
+.sprint-in-qa {
+}
+.sprint-complete {
+    width: 8%;
+    border-right: none;
 }

@@ -12,6 +12,7 @@ class GameStore {
     @observable currentGame = {id: 0};
     @observable currentPlayer = {name: ''};
 
+    @computed get isPlayer() { return this.currentPlayer.name !== ''; }
     @computed get playerId() { return this.currentPlayer.id; }
     @computed get isInGame() { return this.currentGame.id !== 0; }
 

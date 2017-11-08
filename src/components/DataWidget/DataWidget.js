@@ -10,7 +10,7 @@ const propTypes = {
 const DataWidget = ({label, data}) => {
     return (
         <div className="data-widget-container">
-            <span className="data-widget-label">{label} : </span>
+            <span className="data-widget-label">{label}</span>
             <span className="data-widget-data">{data}</span>
         </div>
     )

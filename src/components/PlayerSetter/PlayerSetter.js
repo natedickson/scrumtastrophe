@@ -53,7 +53,12 @@ class PlayerSetter extends Component {
                     </div>
                 )}
                 <button onClick={this.submitChange}>Enter</button>
-                {this.state.alreadyHasId ? null : (
+                {this.state.alreadyHasId ? (
+                    <div>
+                        <br/>
+                        <a onClick={this.doOtherThing}>Go Back</a>
+                    </div>
+                ) : (
                     <div>
                         <br/>
                         <a onClick={this.doOtherThing}>Already have a player id?</a>
@@ -91,7 +96,7 @@ class PlayerSetter extends Component {
 
     doOtherThing = () => {
         const state = this.state;
-        state.alreadyHasId = true;
+        state.alreadyHasId = !state.alreadyHasId;
         this.setState(state);
     };
 }

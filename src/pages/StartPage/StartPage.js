@@ -25,11 +25,15 @@ class StartPage extends Component {
     render() {
         return (
             <div className="start-page-container">
+                <GameTitle/>
                 {this.selectGameModal()}
                 {this.setPlayerModal()}
-                <GameTitle/>
-                <MenuButton onClick={this.createGame} label="Create Game"/>
-                <MenuButton onClick={this.selectGame} label="Join Game"/>
+                {!(this.props.gameStore.isPlayer) ? null : (
+                    <div>
+                        <MenuButton onClick={this.createGame} label="Create Game"/>
+                        <MenuButton onClick={this.selectGame} label="Join Game"/>
+                    </div>
+                )}
             </div>
         );
     }
@@ -43,10 +47,8 @@ class StartPage extends Component {
     }
 
     setPlayerModal = () => {
-        return this.props.gameStore.currentPlayer.name === '' ? (
-            <PopUp popupTitle="Welcome" popupContent={() => {
-                return (<PlayerSetter onSubmit={this.props.gameStore.getPlayer} availablePlayerRoles={this.props.gameStore.availablePlayerRoles}/>)
-            }} onExit={() => {return null}} okayButton={false}/>
+        return !(this.props.gameStore.isPlayer) ? (
+            <PlayerSetter onSubmit={this.props.gameStore.getPlayer} availablePlayerRoles={this.props.gameStore.availablePlayerRoles}/>
         ) : null;
     }
 

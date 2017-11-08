@@ -1,7 +1,14 @@
 .data-widget-container {
     display:inline-block;
     margin-right: 25px;
+    border: 1px solid white;
+    padding: .6em;
 }
-
+.data-widget-container span {
+    display: block;
+}
 .data-widget-label {
+    padding-bottom: .2em;
+    margin-bottom: .2em;
+    border-bottom: 1px dashed white;
 }

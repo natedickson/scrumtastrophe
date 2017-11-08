@@ -6,24 +6,25 @@
 .left-container {
     float: left;
     height: inherit;
-    width:72%;
+    width:77%;
     margin-top: 20px;
     margin-right: 3%;
 }
 
 .game-board-container {
-    height: 60vh;
+    height: 70vh;
     background-color: rgb(85, 85, 85);
 }
 
 .player-actions-container {
-    height: 20vh;
+    height: 10vh;
+    float: right;
 }
 
 .right-container {
     float: left;
     height: inherit;
-    width:25%;
+    width:20%;
     margin-top: 20px;
 }
 

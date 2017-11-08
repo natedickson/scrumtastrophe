@@ -18,8 +18,13 @@ class GameStateStore {
     @observable availableActions = []; //array of action objects that have a label and data about the action
     @observable playerSummaries = []; //to populate the playerlist
     @observable chatLog = []; //to populate the chat box
-    @observable typedMessage = '';
-    @observable sprintStories = []; //to be displayed on the board
+    @observable sprintStories = {
+        backlog: [],
+        inDev: [],
+        inCodeReview: [],
+        inQa: [],
+        complete: []
+    }; //to be displayed on the board
 
     @action setCurrentState = (state) => {
         this.currentState = state;
@@ -49,7 +54,7 @@ class GameStateStore {
             this.setAvailableLoad(response.data.availableLoad);
             this.setPlayerSummaries(response.data.playerSummaries);
             this.setChatLog(response.data.chatMessages);
-            this.setSprintStories(response.data.sprintStories);
+            this.setSprintStories(this.sortStories(response.data.sprintStories));
             this.setAvailableActions(response.data.availableActions);
             setTimeout(() => {this.beginSync()}, 1000);
             loader.hide();
@@ -82,7 +87,7 @@ class GameStateStore {
             this.setAvailableLoad(response.data.availableLoad);
             this.setPlayerSummaries(response.data.playerSummaries);
             this.setChatLog(response.data.chatMessages);
-            this.setSprintStories(response.data.sprintStories);
+            this.setSprintStories(this.sortStories(response.data.sprintStories));
             this.setAvailableActions(response.data.availableActions);
             if(this.sync) {
                 setTimeout(() => {this.syncGameState()}, 1000);
@@ -93,8 +98,32 @@ class GameStateStore {
     doAction = (action) => {
         //TODO: implement
         axios.post(this.serverUrl + 'action/' + action.action, this.context, {headers: {'Content-type' : 'application/json'}});
-    }
+    };
     //{headers: {'Content-type' : 'application/json'}}
+
+    sortStories = (stories) => {
+        let sortedStories = {
+            backlog: [],
+            inDev: [],
+            inCodeReview: [],
+            inQa: [],
+            complete: []
+        };
+        stories.forEach((story) => {
+            if(!story.inProgress) {
+                sortedStories.backlog.push(story);
+            } else if(story.dev > 0) {
+                sortedStories.inDev.push(story);
+            } else if(story.cr > 0) {
+                sortedStories.inCodeReview.push(story);
+            } else if(story.qa > 0) {
+                sortedStories.inQa.push(story);
+            } else {
+                sortedStories.complete.push(story);
+            }
+        });
+        return sortedStories;
+    }
 }
 
 const gameStateStore = new GameStateStore();
