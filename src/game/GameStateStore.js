@@ -97,7 +97,11 @@ class GameStateStore {
 
     doAction = (action) => {
         //TODO: implement
-        axios.post(this.serverUrl + 'action/' + action.action, this.context, {headers: {'Content-type' : 'application/json'}});
+        let data = null;
+        if(action.target) {
+            data = 1;
+        }
+        axios.post(this.serverUrl + this.context.gameId + '/' + this.context.playerId + '/action/' + action.action, data, {headers: {'Content-type' : 'application/json'}});
     };
     //{headers: {'Content-type' : 'application/json'}}
 

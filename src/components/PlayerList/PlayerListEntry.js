@@ -16,8 +16,7 @@ class PlayerListEntry extends Component {
                 <span className="player-list-name">{player.name}</span>
                 <span>{player.id}</span>
                 <span>{player.role}</span>
-                {/* <span>{player.points}</span> */}
-                <span>15</span>
+                <span style={{textAlign: "right"}}>{player.availableLoad}</span>
             </div>
         )
     }

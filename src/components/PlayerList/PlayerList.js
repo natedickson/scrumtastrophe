@@ -22,7 +22,7 @@ class PlayerList extends Component {
                     <span>Name</span>
                     <span>Id</span>
                     <span>Role</span>
-                    <span>Points</span>
+                    <span style={{textAlign: "right"}}>Avail. Load</span>
                 </div>
                 {players}
             </div>

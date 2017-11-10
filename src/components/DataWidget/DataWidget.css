@@ -1,7 +1,9 @@
 .data-widget-container {
     display:inline-block;
     margin-right: 25px;
-    border: 1px solid white;
+    font-family: 'Indie Flower', cursive;
+    color: #484848;
+    background: #dfff8f;
     padding: .6em;
 }
 .data-widget-container span {
@@ -10,5 +12,5 @@
 .data-widget-label {
     padding-bottom: .2em;
     margin-bottom: .2em;
-    border-bottom: 1px dashed white;
+    border-bottom: 1px dashed #484848;
 }
