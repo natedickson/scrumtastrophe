@@ -1,11 +1,12 @@
 import {observable, useStrict, action} from 'mobx';
 import axios from 'axios';
-import loader from './Loader';
+import spinner from '../util/spinner/Spinner';
+import toast from '../util/toast/Toast';
 
 useStrict(true); //strict mode: observable state only modifiable by actions
 
 class GameStateStore {
-    serverUrl = 'http://localhost:8080/';
+    serverUrl = 'http://192.168.178.164:8080/';
     context = {
         playerId: 0,
         gameId: 0
@@ -23,7 +24,7 @@ class GameStateStore {
         inDev: [],
         inCodeReview: [],
         inQa: [],
-        complete: []
+        complete: [],
     }; //to be displayed on the board
 
     @action setCurrentState = (state) => {
@@ -46,7 +47,7 @@ class GameStateStore {
     };
 
     @action initialize = (gameId, playerId) => {
-        loader.show();
+        spinner.show();
         this.context.gameId = gameId;
         this.context.playerId = playerId;
         axios.get(this.serverUrl + 'game/state?gameId=' + gameId + '&playerId=' + playerId).then((response) => {
@@ -57,9 +58,9 @@ class GameStateStore {
             this.setSprintStories(this.sortStories(response.data.sprintStories));
             this.setAvailableActions(response.data.availableActions);
             setTimeout(() => {this.beginSync()}, 1000);
-            loader.hide();
+            spinner.hide();
         }, () => {
-            loader.hide();
+            spinner.hide();
         });
     };
     @action beginSync = () => {
@@ -95,13 +96,33 @@ class GameStateStore {
         })
     };
 
-    doAction = (action) => {
+    //variables and functions related to completing actions
+    @observable needStoryTarget = false;
+    storyTargetAction = {};
+    @action setNeedStoryTarget = (need) => {
+        this.needStoryTarget = need;
+    };
+    @action doAction = (action) => {
         //TODO: implement
-        let data = null;
-        if(action.target) {
-            data = 1;
+        switch(action.target) {
+            case "story":
+                this.setNeedStoryTarget(true);
+                this.storyTargetAction = action;
+                toast.pop("Click a Story");
+                break;
+            default:
+                this.completeAction(action, null);
         }
+    };
+    completeAction = (action, data) => {
         axios.post(this.serverUrl + this.context.gameId + '/' + this.context.playerId + '/action/' + action.action, data, {headers: {'Content-type' : 'application/json'}});
+    };
+    targetStory = (storyId) => {
+        if(this.needStoryTarget) {
+            this.setNeedStoryTarget(false);
+            this.completeAction(this.storyTargetAction, storyId);
+            this.storyTargetAction = {};
+        }
     };
     //{headers: {'Content-type' : 'application/json'}}
 

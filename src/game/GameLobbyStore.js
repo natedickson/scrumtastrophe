@@ -1,11 +1,11 @@
 import {observable, useStrict, computed, action} from 'mobx';
 import axios from 'axios';
-import loader from './Loader';
+import spinner from '../util/spinner/Spinner';
 
 useStrict(true); //strict mode: observable state only modifiable by actions
 
 class GameStore {
-    serverUrl = 'http://localhost:8080/';
+    serverUrl = 'http://192.168.178.164:8080/';
     // Values marked as 'observable' can be watched by 'observers'
     @observable games = [];
     @observable availablePlayerRoles = [];
@@ -28,17 +28,17 @@ class GameStore {
     @action setGames = (games) => { this.games = games; };
 
     @action getPlayer = (playerData) => {
-        loader.show();
+        spinner.show();
         axios.post(this.serverUrl + 'player/create', playerData, {headers: {'Content-type' : 'application/json'}}).then( (response) => {
             this.setPlayer(response.data);
-            loader.hide();
+            spinner.hide();
         }, () => {
-            loader.hide();
+            spinner.hide();
         });
     };
 
     @action joinGame = (gameId) => {
-        loader.show();
+        spinner.show();
         const playerId = this.playerId;
         const data = {
             playerId: playerId,
@@ -50,42 +50,42 @@ class GameStore {
                 return;
             }
             this.setCurrentGame(response.data);
-            loader.hide();
+            spinner.hide();
         }, (error) => {
             console.log(error);
-            loader.hide();
+            spinner.hide();
         })
     };
 
     @action createGame = () => {
-        loader.show();
+        spinner.show();
         axios.post(this.serverUrl + 'games/create', this.currentPlayer.id, {headers: {'Content-type' : 'application/json'}}).then( (response) => {
             this.setCurrentGame(response.data);
-            loader.hide();
+            spinner.hide();
         }, (error) => {
             console.log(error);
-            loader.hide();
+            spinner.hide();
         });
     };
 
     @action getGames = () => {
-        loader.show();
+        spinner.show();
         axios.get(this.serverUrl + 'games').then( (response) => {
             this.setGames(response.data);
-            loader.hide();
+            spinner.hide();
         }, () => {
-            loader.hide();
+            spinner.hide();
         });
     };
 
     @action getAvailablePlayerRoles = () => {
-        loader.show();
+        spinner.show();
         axios.get(this.serverUrl + 'player/roles').then( (response) => {
             this.setAvailablePlayerRoles(response.data);
-            loader.hide();
+            spinner.hide();
         }, (error) => {
             console.log(error);
-            loader.hide();
+            spinner.hide();
         })
     };
 }

@@ -17,8 +17,8 @@
 }
 
 .player-actions-container {
-    height: 10vh;
-    float: right;
+    height: 8vh;
+    margin-top: 2vh;
 }
 
 .right-container {

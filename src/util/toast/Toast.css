@@ -1,0 +1,10 @@
+.toast-container {
+    position: fixed;
+    bottom: 2em;
+    left: 3em;
+    height: 8em;
+    width: 6em;
+    background: black;
+    color: white;
+    overflow: hidden;
+}

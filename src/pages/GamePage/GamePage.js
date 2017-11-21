@@ -4,19 +4,21 @@ import PropTypes from 'prop-types';
 import PlayerList from '../../components/PlayerList/PlayerList';
 import ChatBox from '../../components/ChatBox/ChatBox';
 import './GamePage.css';
-import GameBoard from "../../components/GameBoard/GameBoard";
-import PlayerActions from "../../components/PlayerActions/PlayerActions";
+import GameBoard from '../../components/GameBoard/GameBoard';
+import PlayerActions from '../../components/PlayerActions/PlayerActions';
+import ToastContainer from '../../util/toast/ToastContainer';
+import toast from '../../util/toast/Toast';
 
 const propTypes = {
-    gameStore: PropTypes.object,
     gameState: PropTypes.object,
-    loader: PropTypes.object
+    gameId: PropTypes.number,
+    playerId: PropTypes.number
 }
 
 @observer
 class GamePage extends Component{
     componentWillMount() {
-        this.props.gameState.initialize(this.props.gameStore.currentGame.id, this.props.gameStore.playerId);
+        this.props.gameState.initialize(this.props.gameId, this.props.playerId);
     }
     render() {
         const gameState = this.props.gameState;
@@ -26,8 +28,9 @@ class GamePage extends Component{
         const actions = gameState.availableActions;
         return (
             <div className="game-page-container">
+                <ToastContainer toast={toast}/>
                 <span className="left-container">
-                    <GameBoard sprintStories={stories}/>
+                    <GameBoard sprintStories={stories} storyClick={gameState.targetStory}/>
                     <PlayerActions availableActions={actions} actionCallback={gameState.doAction}/>
                 </span>
                 <span className="right-container">

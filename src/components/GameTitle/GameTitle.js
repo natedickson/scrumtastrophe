@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import './GameTitle.css';
+import title from './title.png';
 
 export default class GameTitle extends Component {
     render() {
         return (
-            <h1 className="game-title">
-                GameTitle
-            </h1>
+            <div className="game-title">
+                <img src={title} alt="Scrumtastrophe"/>
+            </div>
         );
     }
 }

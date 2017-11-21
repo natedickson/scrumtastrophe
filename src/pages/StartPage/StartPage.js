@@ -9,8 +9,7 @@ import PopUp from "../../components/PopUp/PopUp";
 import PlayerSetter from "../../components/PlayerSetter/PlayerSetter";
 
 const propTypes = {
-    gameStore: PropTypes.object,
-    loader: PropTypes.object
+    gameStore: PropTypes.object
 };
 
 @observer

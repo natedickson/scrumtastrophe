@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-    story: PropTypes.object.isRequired
+    story: PropTypes.object.isRequired,
+    click: PropTypes.func
 };
 
 class Story extends Component {
     render() {
-        const story = this.props.story;
+        const {story, click} = this.props;
         return (
-            <div className="story-container">
+            <div onClick={() => click(story.id)} className="story-container">
                 <div>Story {story.id}</div>
                 <div>Dev: {story.dev}</div>
                 <div>QA: {story.qa}</div>

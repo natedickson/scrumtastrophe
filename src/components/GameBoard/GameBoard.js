@@ -6,6 +6,7 @@ import BoardColumn from './BoardColumn';
 
 const propTypes = {
     sprintStories: PropTypes.object.isRequired,
+    storyClick: PropTypes.func
 };
 
 @observer
@@ -19,11 +20,11 @@ class GameBoard extends Component {
                     <div className="game-board-header">
                         Scrum Board
                     </div>
-                    <BoardColumn name="sprint-backlog" label="Backlog" stories={stories.backlog}/>
-                    <BoardColumn name="sprint-in-dev" label="Dev" stories={stories.inDev}/>
-                    <BoardColumn name="sprint-in-code-review" label="C.R." stories={stories.inCodeReview}/>
-                    <BoardColumn name="sprint-in-qa" label="QA" stories={stories.inQa}/>
-                    <BoardColumn name="sprint-complete" label="Complete" stories={stories.complete}/>
+                    <BoardColumn name="sprint-backlog" label="Backlog" stories={stories.backlog} storyClick={this.props.storyClick}/>
+                    <BoardColumn name="sprint-in-dev" label="Dev" stories={stories.inDev} storyClick={this.props.storyClick}/>
+                    <BoardColumn name="sprint-in-code-review" label="C.R." stories={stories.inCodeReview} storyClick={this.props.storyClick}/>
+                    <BoardColumn name="sprint-in-qa" label="QA" stories={stories.inQa} storyClick={this.props.storyClick}/>
+                    <BoardColumn name="sprint-complete" label="Complete" stories={stories.complete} storyClick={this.props.storyClick}/>
                     <div className="eraser"></div>
                     <div className="red-pen"></div>
                     <div className="blue-pen"></div>

@@ -1,4 +1,10 @@
+.game-title img{
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
 .game-title {
-    font-family: 'Fascinate Inline', cursive;
-    font-size: 6.5em;
+    height: 15em;
 }

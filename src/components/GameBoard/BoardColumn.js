@@ -5,14 +5,15 @@ import Story from './Story';
 const propTypes = {
     name: PropTypes.string,
     label: PropTypes.string,
-    stories: PropTypes.object
+    stories: PropTypes.object,
+    storyClick: PropTypes.func
 };
 class BoardColumn extends Component {
     render() {
-        const {name, label, stories} = this.props;
+        const {name, label, stories, storyClick} = this.props;
         const Stories = typeof stories === 'undefined' ? null
             : stories.map((story) => {
-                return(<Story key={story.id} story={story}/>);
+                return(<Story key={story.id} story={story} click={storyClick}/>);
             });
         return (
             <div className={name + " board-column"}>

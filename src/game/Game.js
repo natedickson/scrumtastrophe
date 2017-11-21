@@ -4,13 +4,13 @@ import {observer} from 'mobx-react';
 import './Game.css';
 import StartPage from '../pages/StartPage/StartPage';
 import GamePage from '../pages/GamePage/GamePage';
-import LoaderComponent from './LoaderComponent';
+import SpinnerComponent from '../util/spinner/SpinnerComponent';
 import GameHeader from '../components/GameHeader/GameHeader';
 
 const propTypes = {
     gameStore: PropTypes.object,
     gameStateStore: PropTypes.object,
-    loader: PropTypes.object
+    spinner: PropTypes.object
 };
 
 @observer
@@ -21,14 +21,14 @@ class Game extends Component {
     }
 
     render() {
-        const {gameStore, gameStateStore, loader} = this.props;
+        const {gameStore, gameStateStore, spinner} = this.props;
         return (
             <div className="game-container">
-                {loader.visible ? (<LoaderComponent/>) : null}
+                {spinner.visible ? (<SpinnerComponent/>) : null}
                 <div className="pages-container">
                     <GameHeader playerName={gameStore.currentPlayer.name} playerRole={gameStore.currentPlayer.role} playerId={gameStore.currentPlayer.id} gameId={gameStore.currentGame.id}/>
-                    {!(gameStore.isInGame) ? (<StartPage gameStore={gameStore} loader={loader}/>) : null}
-                    {gameStore.isInGame  ? (<GamePage gameStore={gameStore} gameState={gameStateStore} loader={loader}/>) : null}
+                    {!(gameStore.isInGame) ? (<StartPage gameStore={gameStore}/>) : null}
+                    {gameStore.isInGame  ? (<GamePage gameId={gameStore.currentGame.id} playerId={gameStore.playerId} gameState={gameStateStore}/>) : null}
                 </div>
             </div>
         );

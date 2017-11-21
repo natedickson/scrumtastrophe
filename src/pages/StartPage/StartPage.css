@@ -1,8 +1,8 @@
 .start-page-container {
     position: relative;
     text-align: center;
-    width: 40%;
-    margin: 0 30% 0 30%;
+    width: 80%;
+    margin: 0 10% 0 10%;
     padding-top: 100px;
-    box-shadow: 0em 33em 20em -11em #000000;
+    box-shadow: 0em 38em 20em -11em #000000;
 }
